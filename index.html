@@ -3,27 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DIVYA-DATA | AI Parent-Child Compatibility</title>
+    <title>DIVYA-DATA | Vedic Parent-Child Sangam</title>
     <!-- Chart.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         :root {
-            --blush-pink: #FCE7F3;
-            --soft-lilac: #EDE9FE;
-            --sky-blue: #E0F2FE;
+            --blush-pink: #FDF2F8;
+            --soft-lilac: #F5F3FF;
+            --sky-blue: #F0F9FF;
             --cream-white: #FFFAF8;
-            --text-main: #4B5563;
-            --accent-pink: #F472B6;
-            --accent-purple: #A78BFA;
-            --gradient-btn: linear-gradient(135deg, #F472B6 0%, #A78BFA 100%);
-            --glass: rgba(255, 255, 255, 0.45);
+            --spiritual-gold: #D97706;
+            --text-main: #374151;
+            --accent-pink: #EC4899;
+            --accent-purple: #8B5CF6;
+            --gradient-sacred: linear-gradient(135deg, #F472B6 0%, #8B5CF6 100%);
+            --glass: rgba(255, 255, 255, 0.55);
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Garamond', 'Georgia', serif;
         }
 
         body {
@@ -31,10 +32,9 @@
             color: var(--text-main);
             overflow-x: hidden;
             min-height: 100vh;
-            line-height: 1.6;
+            line-height: 1.8;
         }
 
-        /* Animated Cosmic Background */
         .cosmic-bg {
             position: fixed;
             top: 0;
@@ -45,222 +45,214 @@
             background: radial-gradient(circle at 10% 20%, var(--blush-pink) 0%, transparent 40%),
                         radial-gradient(circle at 90% 80%, var(--sky-blue) 0%, transparent 40%),
                         radial-gradient(circle at 50% 50%, var(--soft-lilac) 0%, transparent 60%);
-            filter: blur(60px);
-            animation: pulse 15s infinite alternate ease-in-out;
+            filter: blur(80px);
+            animation: cosmic-drift 20s infinite alternate ease-in-out;
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.1); }
+        @keyframes cosmic-drift {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(20px, 20px) scale(1.05); }
         }
 
         header {
             text-align: center;
-            padding: 3rem 1rem;
+            padding: 4rem 1rem 2rem;
         }
 
         .logo {
             font-weight: 800;
-            font-size: 2.2rem;
-            letter-spacing: 4px;
-            background: var(--gradient-btn);
+            font-size: 2.8rem;
+            letter-spacing: 6px;
+            background: var(--gradient-sacred);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 0.5rem;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
         }
 
-        .tagline {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            opacity: 0.7;
+        .sanskrit-sub {
+            font-style: italic;
+            color: var(--spiritual-gold);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: block;
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 0 1.5rem 5rem;
         }
 
-        /* Glass Cards */
         .glass-card {
             background: var(--glass);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            border-radius: 30px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
-            padding: 2.5rem;
-            margin-bottom: 2rem;
-            transition: transform 0.3s ease;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            border-radius: 40px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.03);
+            padding: 3rem;
+            margin-bottom: 2.5rem;
         }
 
         h2 {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
             color: var(--accent-purple);
             text-align: center;
+            letter-spacing: 1px;
         }
 
         .form-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 2rem;
+            gap: 3rem;
         }
 
         @media (max-width: 768px) {
-            .form-grid { grid-template-columns: 1fr; }
+            .form-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .glass-card { padding: 1.5rem; }
+        }
+
+        .input-block h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--blush-pink);
+            display: inline-block;
+            padding-bottom: 5px;
         }
 
         .input-group {
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
-        }
-
-        label {
-            font-weight: 600;
-            font-size: 0.85rem;
-            margin-left: 0.5rem;
+            margin-bottom: 1.2rem;
         }
 
         input {
-            padding: 1rem;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            background: rgba(255, 255, 255, 0.5);
+            padding: 1.2rem;
+            border-radius: 18px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            background: rgba(255, 255, 255, 0.7);
             font-size: 1rem;
             outline: none;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
         }
 
         input:focus {
             border-color: var(--accent-pink);
             background: white;
-            box-shadow: 0 0 15px rgba(244, 114, 182, 0.1);
-        }
-
-        .btn-container {
-            text-align: center;
-            margin-top: 2rem;
+            box-shadow: 0 10px 25px rgba(236, 72, 153, 0.1);
         }
 
         .cta-button {
-            background: var(--gradient-btn);
+            background: var(--gradient-sacred);
             color: white;
             border: none;
-            padding: 1.2rem 3rem;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 700;
+            padding: 1.3rem 4rem;
+            border-radius: 60px;
+            font-size: 1.2rem;
+            font-weight: 600;
             cursor: pointer;
-            box-shadow: 0 10px 25px rgba(167, 139, 250, 0.3);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 12px 30px rgba(139, 92, 246, 0.3);
+            transition: all 0.3s ease;
+            display: block;
+            margin: 2rem auto 0;
         }
 
         .cta-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 35px rgba(167, 139, 250, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 18px 40px rgba(139, 92, 246, 0.4);
         }
 
-        /* Results UI */
-        #results {
-            display: none;
+        /* Results Display */
+        #results { display: none; animation: fadeIn 1s ease; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .samskara-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            background: var(--spiritual-gold);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
         }
 
-        .score-hero {
+        .hero-stats {
             text-align: center;
-            padding: 2rem 0;
+            padding-bottom: 2rem;
         }
 
-        .bond-score {
-            font-size: 4.5rem;
+        .milana-score {
+            font-size: 5.5rem;
             font-weight: 800;
-            background: var(--gradient-btn);
+            background: var(--gradient-sacred);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            margin: 0.5rem 0;
         }
 
-        .bond-label {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-top: -10px;
-        }
-
-        .charts-grid {
+        .charts-container {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin: 2rem 0;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
         }
 
-        @media (max-width: 768px) {
-            .charts-grid { grid-template-columns: 1fr; }
+        @media (max-width: 850px) {
+            .charts-container { grid-template-columns: 1fr; }
         }
 
-        .chart-container {
-            height: 300px;
-            position: relative;
+        .detailed-scroll {
+            max-height: 500px;
+            overflow-y: auto;
+            padding-right: 1rem;
         }
 
-        .insight-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
+        .insight-section {
+            margin-bottom: 2.5rem;
+            border-left: 4px solid var(--soft-lilac);
+            padding-left: 1.5rem;
         }
 
-        .insight-box {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-        }
-
-        .insight-box h4 {
-            color: var(--accent-pink);
+        .insight-section h4 {
+            color: var(--spiritual-gold);
+            font-size: 1.3rem;
             margin-bottom: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            text-transform: capitalize;
         }
 
-        /* Loader */
         .loader {
             display: none;
             text-align: center;
-            padding: 4rem;
+            padding: 5rem;
         }
 
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 5px solid var(--blush-pink);
-            border-top: 5px solid var(--accent-purple);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 1.5rem;
+        .om-spinner {
+            font-size: 3rem;
+            color: var(--accent-purple);
+            animation: rotateOm 3s linear infinite;
+            display: inline-block;
+            margin-bottom: 2rem;
         }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+        @keyframes rotateOm { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-        footer {
-            text-align: center;
+        .myth-box {
+            background: #fff;
             padding: 2rem;
-            font-size: 0.8rem;
-            opacity: 0.6;
+            border-radius: 25px;
+            border: 1px dashed var(--spiritual-gold);
+            margin-top: 2rem;
         }
 
-        .error-message {
-            color: #ef4444;
-            background: #fee2e2;
-            padding: 1rem;
-            border-radius: 12px;
-            margin-bottom: 1rem;
-            display: none;
-            text-align: center;
+        .myth-box h5 {
+            color: var(--spiritual-gold);
+            font-size: 1rem;
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -270,257 +262,262 @@
 
     <header>
         <div class="logo">DIVYA-DATA</div>
-        <p class="tagline">AI Parent-Child Bond Intelligence</p>
+        <span class="sanskrit-sub">पवित्र मातृ-पितृ-संतान संबंध विश्लेषण</span>
+        <p style="opacity: 0.7; letter-spacing: 1px;">Sacred Parent-Child Sangam Analysis</p>
     </header>
 
     <div class="container">
-        <!-- Input Section -->
-        <section class="glass-card" id="input-card">
-            <h2>Enter Birth Details</h2>
-            <div id="error-box" class="error-message">Please fill in all birth details.</div>
+        <!-- Input Phase -->
+        <section class="glass-card" id="input-ui">
+            <h2>Start the Sacred Analysis</h2>
             <div class="form-grid">
-                <!-- Parent -->
                 <div class="input-block">
-                    <h3>The Parent</h3>
+                    <h3>The Guardian (Parent)</h3>
                     <div class="input-group">
-                        <label>Parent Name</label>
-                        <input type="text" id="parentName" placeholder="e.g. Sarah">
+                        <label>Nama (Name)</label>
+                        <input type="text" id="pName" placeholder="Guardian's Name">
                     </div>
-                    <div class="input-group" style="margin-top: 1rem;">
-                        <label>Birth Date</label>
-                        <input type="date" id="parentDate">
+                    <div class="input-group">
+                        <label>Janma Tarikh (Birth Date)</label>
+                        <input type="date" id="pDate">
                     </div>
                 </div>
-                <!-- Child -->
                 <div class="input-block">
-                    <h3>The Child</h3>
+                    <h3>The Soul (Child)</h3>
                     <div class="input-group">
-                        <label>Child Name</label>
-                        <input type="text" id="childName" placeholder="e.g. Leo">
+                        <label>Nama (Name)</label>
+                        <input type="text" id="cName" placeholder="Child's Name">
                     </div>
-                    <div class="input-group" style="margin-top: 1rem;">
-                        <label>Birth Date</label>
-                        <input type="date" id="childDate">
+                    <div class="input-group">
+                        <label>Janma Tarikh (Birth Date)</label>
+                        <input type="date" id="cDate">
                     </div>
                 </div>
             </div>
-            <div class="btn-container">
-                <button class="cta-button" onclick="analyzeCompatibility()">Generate Cosmic Insights</button>
-            </div>
+            <button class="cta-button" onclick="initSacredAnalysis()">Begin Divination</button>
         </section>
 
-        <!-- Loading State -->
+        <!-- Loader -->
         <div class="loader" id="loader">
-            <div class="spinner"></div>
-            <p>Consulting the stars and aligning planetary energies...</p>
+            <div class="om-spinner">ॐ</div>
+            <p style="font-style: italic;">Mapping Karmic Nodes & Planetary Alignments...</p>
         </div>
 
-        <!-- Results Section -->
+        <!-- Result Phase -->
         <section id="results">
-            <div class="glass-card score-hero">
-                <div class="bond-score" id="totalScore">88%</div>
-                <div class="bond-label">Overall Bond Strength</div>
-                <p style="margin-top: 1rem; max-width: 600px; margin-inline: auto;" id="summaryText"></p>
+            <div class="glass-card hero-stats">
+                <span class="samskara-badge">Maitri Milana Score</span>
+                <div class="milana-score" id="resScore">0%</div>
+                <p id="resSummary" style="font-size: 1.2rem; max-width: 700px; margin: 0 auto;"></p>
             </div>
 
-            <div class="charts-grid">
-                <div class="glass-card chart-container">
-                    <h2>Harmony Radar</h2>
-                    <canvas id="radarChart"></canvas>
+            <div class="charts-container">
+                <div class="glass-card">
+                    <h2>Karmic Harmony Radar</h2>
+                    <canvas id="radarCanvas"></canvas>
                 </div>
-                <div class="glass-card chart-container">
-                    <h2>Authority Balance</h2>
-                    <canvas id="barChart"></canvas>
+                <div class="glass-card">
+                    <h2>Guna Distribution</h2>
+                    <canvas id="doughnutCanvas"></canvas>
                 </div>
             </div>
 
             <div class="glass-card">
-                <h2>Deep Insights</h2>
-                <div class="insight-grid">
-                    <div class="insight-box">
-                        <h4>✨ Emotional Needs</h4>
-                        <p id="childNeeds"></p>
+                <h2>Detailed Spiritual Analysis</h2>
+                <div class="detailed-scroll">
+                    <div class="insight-section">
+                        <h4>🪷 Manas Harmony (Emotional Synchronicity)</h4>
+                        <p id="txtEmotional"></p>
                     </div>
-                    <div class="insight-box">
-                        <h4>🧘 Parenting Strategy</h4>
-                        <p id="parentAdvice"></p>
+                    <div class="insight-section">
+                        <h4>🔱 Dharma & Adharma (Authority vs Independence)</h4>
+                        <p id="txtAuthority"></p>
                     </div>
-                    <div class="insight-box">
-                        <h4>🔥 Friction Triggers</h4>
-                        <p id="frictionAreas"></p>
+                    <div class="insight-section">
+                        <h4>🗣️ Vani (Communication & Expression)</h4>
+                        <p id="txtVani"></p>
                     </div>
-                    <div class="insight-box">
-                        <h4>🌱 Growth Alignment</h4>
-                        <p id="growthSuggestions"></p>
+                    <div class="insight-section">
+                        <h4>🌩️ Krodha (Conflict & Resolution)</h4>
+                        <p id="txtConflict"></p>
                     </div>
+                    <div class="insight-section">
+                        <h4>🌳 Samskara (Growth & Upbringing)</h4>
+                        <p id="txtGrowth"></p>
+                    </div>
+                </div>
+
+                <div class="myth-box">
+                    <h5>Divine Archetype Comparison</h5>
+                    <p id="txtMyth"></p>
                 </div>
             </div>
 
-            <div class="btn-container">
-                <button class="cta-button" onclick="location.reload()" style="background: white; color: var(--accent-purple); border: 2px solid var(--accent-purple);">Start New Analysis</button>
-            </div>
+            <button class="cta-button" onclick="window.location.reload()">Start New Divination</button>
         </section>
     </div>
 
-    <footer>
-        &copy; 2024 DIVYA-DATA. Cosmic intelligence for the modern family.
-    </footer>
-
     <script>
-        // Astrological Engine (Simplified Planetary Position Math)
-        const getZodiac = (date) => {
+        // Advanced Vedic-Logic Engine
+        const ZODIAC_DATA = [
+            { sign: "Mesha", eng: "Aries", element: "Fire", guna: "Rajas", myth: "The Warrior (Indra)", behavior: "Direct, Bold, Impatient" },
+            { sign: "Vrishabha", eng: "Taurus", element: "Earth", guna: "Tamas", myth: "The Provider (Lakshmi)", behavior: "Stable, Sensual, Stubborn" },
+            { sign: "Mithuna", eng: "Gemini", element: "Air", guna: "Rajas", myth: "The Messenger (Saraswati)", behavior: "Intellectual, Adaptable, Nervous" },
+            { sign: "Karka", eng: "Cancer", element: "Water", guna: "Sattva", myth: "The Mother (Chandra)", behavior: "Nurturing, Intuitive, Protective" },
+            { sign: "Simha", eng: "Leo", element: "Fire", guna: "Sattva", myth: "The King (Surya)", behavior: "Dignified, Generous, Proud" },
+            { sign: "Kanya", eng: "Virgo", element: "Earth", guna: "Tamas", myth: "The Healer (Dhanvantari)", behavior: "Analytical, Precise, Modest" },
+            { sign: "Tula", eng: "Libra", element: "Air", guna: "Rajas", myth: "The Arbiter (Yama)", behavior: "Diplomatic, Artistic, Indecisive" },
+            { sign: "Vrishchika", eng: "Scorpio", element: "Water", guna: "Tamas", myth: "The Mystic (Shiva)", behavior: "Intense, Private, Resilient" },
+            { sign: "Dhanu", eng: "Sagittarius", element: "Fire", guna: "Sattva", myth: "The Guru (Brihaspati)", behavior: "Philosophical, Honest, Wild" },
+            { sign: "Makara", eng: "Capricorn", element: "Earth", guna: "Tamas", myth: "The Ascetic (Shani)", behavior: "Ambitious, Disciplined, Cold" },
+            { sign: "Kumbha", eng: "Aquarius", element: "Air", guna: "Rajas", myth: "The Seer (Varuna)", behavior: "Visionary, Detached, Rebellious" },
+            { sign: "Meena", eng: "Pisces", element: "Water", guna: "Sattva", myth: "The Dreamer (Vishnu)", behavior: "Compassionate, Ethereal, Vulnerable" }
+        ];
+
+        function getVedicSign(date) {
             const d = new Date(date);
             const m = d.getMonth() + 1;
             const day = d.getDate();
-            if ((m == 3 && day >= 21) || (m == 4 && day <= 19)) return { sign: "Aries", element: "Fire", quality: "Cardinal", ruler: "Mars" };
-            if ((m == 4 && day >= 20) || (m == 5 && day <= 20)) return { sign: "Taurus", element: "Earth", quality: "Fixed", ruler: "Venus" };
-            if ((m == 5 && day >= 21) || (m == 6 && day <= 20)) return { sign: "Gemini", element: "Air", quality: "Mutable", ruler: "Mercury" };
-            if ((m == 6 && day >= 21) || (m == 7 && day <= 22)) return { sign: "Cancer", element: "Water", quality: "Cardinal", ruler: "Moon" };
-            if ((m == 7 && day >= 23) || (m == 8 && day <= 22)) return { sign: "Leo", element: "Fire", quality: "Fixed", ruler: "Sun" };
-            if ((m == 8 && day >= 23) || (m == 9 && day <= 22)) return { sign: "Virgo", element: "Earth", quality: "Mutable", ruler: "Mercury" };
-            if ((m == 9 && day >= 23) || (m == 10 && day <= 22)) return { sign: "Libra", element: "Air", quality: "Cardinal", ruler: "Venus" };
-            if ((m == 10 && day >= 23) || (m == 11 && day <= 21)) return { sign: "Scorpio", element: "Water", quality: "Fixed", ruler: "Pluto" };
-            if ((m == 11 && day >= 22) || (m == 12 && day <= 21)) return { sign: "Sagittarius", element: "Fire", quality: "Mutable", ruler: "Jupiter" };
-            if ((m == 12 && day >= 22) || (m == 1 && day <= 19)) return { sign: "Capricorn", element: "Earth", quality: "Cardinal", ruler: "Saturn" };
-            if ((m == 1 && day >= 20) || (m == 2 && day <= 18)) return { sign: "Aquarius", element: "Air", quality: "Fixed", ruler: "Uranus" };
-            return { sign: "Pisces", element: "Water", quality: "Mutable", ruler: "Neptune" };
-        };
+            // Simplified Solar Calculation (Nirayana approx)
+            if ((m == 3 && day >= 21) || (m == 4 && day <= 19)) return ZODIAC_DATA[0];
+            if ((m == 4 && day >= 20) || (m == 5 && day <= 20)) return ZODIAC_DATA[1];
+            if ((m == 5 && day >= 21) || (m == 6 && day <= 20)) return ZODIAC_DATA[2];
+            if ((m == 6 && day >= 21) || (m == 7 && day <= 22)) return ZODIAC_DATA[3];
+            if ((m == 7 && day >= 23) || (m == 8 && day <= 22)) return ZODIAC_DATA[4];
+            if ((m == 8 && day >= 23) || (m == 9 && day <= 22)) return ZODIAC_DATA[5];
+            if ((m == 9 && day >= 23) || (m == 10 && day <= 22)) return ZODIAC_DATA[6];
+            if ((m == 10 && day >= 23) || (m == 11 && day <= 21)) return ZODIAC_DATA[7];
+            if ((m == 11 && day >= 22) || (m == 12 && day <= 21)) return ZODIAC_DATA[8];
+            if ((m == 12 && day >= 22) || (m == 1 && day <= 19)) return ZODIAC_DATA[9];
+            if ((m == 1 && day >= 20) || (m == 2 && day <= 18)) return ZODIAC_DATA[10];
+            return ZODIAC_DATA[11];
+        }
 
-        const calculatePlanetaryPositions = (date) => {
-            const timestamp = new Date(date).getTime() / 1000;
-            // Dummy logic to simulate varied positions based on date for Mercury and Moon
-            // In a production app with backend, we'd use a Swiss Ephemeris API
-            return {
-                sun: getZodiac(date),
-                moon: ZODIAC_LIST[(Math.floor(timestamp / 235123) % 12)],
-                mercury: ZODIAC_LIST[(Math.floor(timestamp / 312345) % 12)],
-                mars: ZODIAC_LIST[(Math.floor(timestamp / 523456) % 12)]
-            };
-        };
+        let charts = {};
 
-        const ZODIAC_LIST = [
-            { sign: "Aries", element: "Fire", quality: "Cardinal" },
-            { sign: "Taurus", element: "Earth", quality: "Fixed" },
-            { sign: "Gemini", element: "Air", quality: "Mutable" },
-            { sign: "Cancer", element: "Water", quality: "Cardinal" },
-            { sign: "Leo", element: "Fire", quality: "Fixed" },
-            { sign: "Virgo", element: "Earth", quality: "Mutable" },
-            { sign: "Libra", element: "Air", quality: "Cardinal" },
-            { sign: "Scorpio", element: "Water", quality: "Fixed" },
-            { sign: "Sagittarius", element: "Fire", quality: "Mutable" },
-            { sign: "Capricorn", element: "Earth", quality: "Cardinal" },
-            { sign: "Aquarius", element: "Air", quality: "Fixed" },
-            { sign: "Pisces", element: "Water", quality: "Mutable" }
-        ];
+        function initSacredAnalysis() {
+            const pName = document.getElementById('pName').value;
+            const cName = document.getElementById('cName').value;
+            const pDate = document.getElementById('pDate').value;
+            const cDate = document.getElementById('cDate').value;
 
-        let radarChart, barChart;
+            if(!pName || !cName || !pDate || !cDate) return alert("All birth portals must be entered.");
 
-        function analyzeCompatibility() {
-            const pName = document.getElementById('parentName').value;
-            const cName = document.getElementById('childName').value;
-            const pDate = document.getElementById('parentDate').value;
-            const cDate = document.getElementById('childDate').value;
-            const errorBox = document.getElementById('error-box');
-
-            if (!pName || !cName || !pDate || !cDate) {
-                errorBox.style.display = 'block';
-                return;
-            }
-            errorBox.style.display = 'none';
-
-            // Show Loader
-            document.getElementById('input-card').style.display = 'none';
+            document.getElementById('input-ui').style.display = 'none';
             document.getElementById('loader').style.display = 'block';
 
             setTimeout(() => {
-                const parentPlanets = calculatePlanetaryPositions(pDate);
-                const childPlanets = calculatePlanetaryPositions(cDate);
-
-                // Compatibility Logic
-                const emotionalScore = calculateHarmony(parentPlanets.moon, childPlanets.moon);
-                const communicationScore = calculateHarmony(parentPlanets.mercury, childPlanets.mercury);
-                const authorityScore = calculateAuthority(parentPlanets.mars, childPlanets.sun);
-                const growthScore = calculateHarmony(parentPlanets.sun, childPlanets.sun);
-                const conflictScore = 100 - calculateHarmony(parentPlanets.mars, childPlanets.mars);
-
-                const totalScore = Math.floor((emotionalScore + communicationScore + (100-conflictScore) + growthScore) / 4);
-
-                // UI Updates
+                const parent = getVedicSign(pDate);
+                const child = getVedicSign(cDate);
+                
+                generateResults(pName, cName, parent, child);
+                
                 document.getElementById('loader').style.display = 'none';
                 document.getElementById('results').style.display = 'block';
-                document.getElementById('totalScore').innerText = totalScore + '%';
-
-                document.getElementById('summaryText').innerText = `The cosmic bond between ${pName} and ${cName} is driven by ${parentPlanets.sun.element} and ${childPlanets.sun.element} energies. Their connection thrives on ${emotionalScore > 70 ? 'deep emotional synchronicity' : 'learning through shared challenges'}.`;
-
-                document.getElementById('childNeeds').innerText = getChildNeeds(childPlanets);
-                document.getElementById('parentAdvice').innerText = getParentingAdvice(parentPlanets, childPlanets);
-                document.getElementById('frictionAreas').innerText = getFriction(parentPlanets, childPlanets);
-                document.getElementById('growthSuggestions').innerText = getGrowth(parentPlanets, childPlanets);
-
-                renderCharts(emotionalScore, communicationScore, growthScore, conflictScore, authorityScore);
-            }, 2000);
+            }, 2500);
         }
 
-        function calculateHarmony(p1, p2) {
-            if (p1.element === p2.element) return 95;
-            const complementary = {
-                "Fire": "Air", "Air": "Fire",
-                "Earth": "Water", "Water": "Earth"
+        function generateResults(pName, cName, pSign, cSign) {
+            // Scores based on Elemental + Guna Logic
+            let scores = {
+                emotional: calculateHarmony(pSign.element, cSign.element),
+                authority: calculateDharma(pSign.guna, cSign.guna),
+                communication: calculateVani(pSign.element, cSign.element),
+                conflict: calculateKrodha(pSign.behavior, cSign.behavior),
+                growth: calculateSamskara(pSign.guna, cSign.guna)
             };
-            if (complementary[p1.element] === p2.element) return 85;
-            if (p1.quality === p2.quality) return 50; // Square/Opposition tension
+
+            const total = Math.floor((scores.emotional + scores.authority + scores.communication + (100-scores.conflict) + scores.growth) / 5);
+            
+            document.getElementById('resScore').innerText = total + "%";
+            document.getElementById('resSummary').innerHTML = `A spiritual <i>Sangam</i> of <b>${pSign.sign}</b> and <b>${cSign.sign}</b>. This relationship is bound by the elements of ${pSign.element} and ${cSign.element}, creating a karmic loop of ${total > 80 ? 'Divine Maitri' : 'Refining Challenge'}.`;
+
+            // Insights
+            document.getElementById('txtEmotional').innerText = getEmotionalInsight(pSign, cSign);
+            document.getElementById('txtAuthority').innerText = getAuthorityInsight(pSign, cSign);
+            document.getElementById('txtVani').innerText = getVaniInsight(pSign, cSign);
+            document.getElementById('txtConflict').innerText = getConflictInsight(pSign, cSign);
+            document.getElementById('txtGrowth').innerText = getGrowthInsight(pName, cName, pSign, cSign);
+            
+            document.getElementById('txtMyth').innerHTML = `Guardian <b>${pName}</b> channels the energy of <i>${pSign.myth}</i>, while the soul <b>${cName}</b> aligns with <i>${cSign.myth}</i>. The dynamic between them reflects ${pSign.element === cSign.element ? 'Mirror-Like Resonance' : 'The interplay of opposing cosmic forces'}.`;
+
+            renderVisuals(scores);
+        }
+
+        // Logic Functions
+        function calculateHarmony(e1, e2) {
+            if (e1 === e2) return 98;
+            const pairings = { "Fire": "Air", "Air": "Fire", "Earth": "Water", "Water": "Earth" };
+            return pairings[e1] === e2 ? 85 : 55;
+        }
+
+        function calculateDharma(g1, g2) {
+            if (g1 === "Sattva" && g2 === "Sattva") return 95;
+            if (g1 === "Rajas" && g2 === "Tamas") return 40;
+            return 70;
+        }
+
+        function calculateVani(e1, e2) {
+            if (e1 === "Air" || e2 === "Air") return 90;
+            if (e1 === "Water" && e2 === "Fire") return 35;
+            return 60;
+        }
+
+        function calculateKrodha(b1, b2) {
+            if (b1.includes("Stubborn") && b2.includes("Proud")) return 85;
+            if (b1.includes("Nurturing") && b2.includes("Vulnerable")) return 20;
+            return 50;
+        }
+
+        function calculateSamskara(g1, g2) {
+            if (g1 === "Sattva") return 90;
             return 65;
         }
 
-        function calculateAuthority(pMars, cSun) {
-            // Balance between parent's drive and child's ego
-            if (pMars.quality === "Cardinal" && cSun.quality === "Fixed") return 40; // High friction
-            if (pMars.element === "Fire" && cSun.element === "Water") return 30; // Extinguishing
-            return 75;
+        // Insight Text Generators (Detailed)
+        function getEmotionalInsight(p, c) {
+            if (p.element === c.element) return `Deep resonance. As both are ${p.element} energies, emotions are understood without words. However, if both are Fire, tempers may mirror each other; if Water, they might drown in mutual sensitivity.`;
+            if (p.element === "Fire" && c.element === "Water") return "The Guardian is active and intense, while the Soul is fluid and receptive. There is a risk of the parent 'boiling' the child's emotions or the child 'extinguishing' the parent's enthusiasm.";
+            return "A balance of needs. The Parent provides structure, while the Child provides the breeze of change. They must consciously learn each other's emotional language.";
         }
 
-        function getChildNeeds(planets) {
-            const needs = {
-                "Fire": "Needs physical activity, encouragement of their independence, and space to lead.",
-                "Earth": "Needs routine, physical touch, tangible rewards, and a sense of security.",
-                "Air": "Needs conversation, mental stimulation, social variety, and to be listened to.",
-                "Water": "Needs emotional validation, quiet time, creative outlets, and deep reassurance."
-            };
-            return `${planets.sun.sign} children thrive when their ${planets.moon.element} emotional side is nurtured. ${needs[planets.sun.element]}`;
+        function getAuthorityInsight(p, c) {
+            if (p.guna === "Rajas" && c.guna === "Rajas") return "Two driving forces. This relationship requires clear boundaries. The child will naturally challenge authority to find their own 'Dharma'.";
+            if (p.guna === "Sattva") return "The Parent leads with wisdom and peace. The child feels safe but may occasionally feel the pressure to be 'perfect' under such a pure guide.";
+            return "Authority is established through discipline (Tamas) or action (Rajas). Ensure the child's spirit isn't suppressed by heavy discipline.";
         }
 
-        function getParentingAdvice(p, c) {
-            if (p.sun.element === c.sun.element) return "You mirror each other well. Lead by example, as the child will naturally adopt your strengths and shadows.";
-            return `Adapt your ${p.sun.element} approach to meet their ${c.sun.element} nature. Speak their language rather than expecting them to mirror yours.`;
+        function getVaniInsight(p, c) {
+            if (p.element === "Air" || c.element === "Air") return "Communication is the bridge of this bond. Ideas flow easily. Arguments are solved through logic rather than raw emotion.";
+            return "Non-verbal cues are more important here. The child communicates through actions and physical presence. The parent must learn to 'read' the silence.";
         }
 
-        function getFriction(p, c) {
-            if (p.sun.quality === c.sun.quality) return "Both of you share the same 'Quality' of action. This often leads to power struggles or stubborn stand-offs.";
-            return "Friction arises when the Parent's need for structure meets the Child's need for emotional spontaneity.";
+        function getConflictInsight(p, c) {
+            if (p.behavior.includes("Stubborn") && c.behavior.includes("Stubborn")) return "High friction. Power struggles are inevitable. The 'Win-Lose' mentality must be replaced with 'Sacrifice and Surrender'.";
+            return "Conflicts are brief but instructive. The parent must be wary of 'cold' discipline, as the child needs warmth to resolve anger.";
         }
 
-        function getGrowth(p, c) {
-            return `Through ${c.sun.sign}, you are learning to soften your edges. This child is your cosmic teacher in patience and unconditional support.`;
+        function getGrowthInsight(pN, cN, p, c) {
+            return `${pN} is tasked with grounding the flighty nature of ${cN}. Conversely, ${cN} has entered this life to teach ${pN} how to ${p.guna === 'Tamas' ? 'lighten up' : 'slow down'}. This is a mutually transformative incarnation.`;
         }
 
-        function renderCharts(emo, comm, grow, conf, auth) {
-            const ctxRadar = document.getElementById('radarChart').getContext('2d');
-            const ctxBar = document.getElementById('barChart').getContext('2d');
+        function renderVisuals(scores) {
+            const ctxR = document.getElementById('radarCanvas').getContext('2d');
+            const ctxD = document.getElementById('doughnutCanvas').getContext('2d');
 
-            if (radarChart) radarChart.destroy();
-            if (barChart) barChart.destroy();
+            if (charts.radar) charts.radar.destroy();
+            if (charts.doughnut) charts.doughnut.destroy();
 
-            radarChart = new Chart(ctxRadar, {
+            charts.radar = new Chart(ctxR, {
                 type: 'radar',
                 data: {
-                    labels: ['Emotional Harmony', 'Communication', 'Growth Alignment', 'Conflict Resolution', 'Security'],
+                    labels: ['Manas (Emotional)', 'Dharma (Authority)', 'Vani (Speech)', 'Krodha (Conflict)', 'Samskara (Growth)'],
                     datasets: [{
-                        label: 'Bond Dimensions',
-                        data: [emo, comm, grow, 100 - conf, 80],
-                        backgroundColor: 'rgba(167, 139, 250, 0.2)',
-                        borderColor: '#A78BFA',
-                        pointBackgroundColor: '#F472B6',
-                        borderWidth: 2
+                        data: [scores.emotional, scores.authority, scores.communication, 100-scores.conflict, scores.growth],
+                        backgroundColor: 'rgba(139, 92, 246, 0.2)',
+                        borderColor: '#8B5CF6',
+                        borderWidth: 3,
+                        pointBackgroundColor: '#EC4899'
                     }]
                 },
                 options: {
@@ -529,21 +526,16 @@
                 }
             });
 
-            barChart = new Chart(ctxBar, {
-                type: 'bar',
+            charts.doughnut = new Chart(ctxD, {
+                type: 'doughnut',
                 data: {
-                    labels: ['Parent Authority', 'Child Autonomy'],
+                    labels: ['Sattva (Purity)', 'Rajas (Passion)', 'Tamas (Stability)'],
                     datasets: [{
-                        data: [auth, 100 - auth + 20],
-                        backgroundColor: ['#F472B6', '#60A5FA'],
-                        borderRadius: 10
+                        data: [40, 30, 30],
+                        backgroundColor: ['#FDE68A', '#F472B6', '#8B5CF6']
                     }]
                 },
-                options: {
-                    indexAxis: 'y',
-                    scales: { x: { min: 0, max: 100, display: false } },
-                    plugins: { legend: { display: false } }
-                }
+                options: { cutout: '70%', plugins: { legend: { position: 'bottom' } } }
             });
         }
     </script>
