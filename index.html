@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIVYA-DATA | AI Parent-Child Compatibility</title>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --blush-pink: #FCE7F3;
+            --soft-lilac: #EDE9FE;
+            --sky-blue: #E0F2FE;
+            --cream-white: #FFFAF8;
+            --text-main: #4B5563;
+            --accent-pink: #F472B6;
+            --accent-purple: #A78BFA;
+            --gradient-btn: linear-gradient(135deg, #F472B6 0%, #A78BFA 100%);
+            --glass: rgba(255, 255, 255, 0.45);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--cream-white);
+            color: var(--text-main);
+            overflow-x: hidden;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* Animated Cosmic Background */
+        .cosmic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 10% 20%, var(--blush-pink) 0%, transparent 40%),
+                        radial-gradient(circle at 90% 80%, var(--sky-blue) 0%, transparent 40%),
+                        radial-gradient(circle at 50% 50%, var(--soft-lilac) 0%, transparent 60%);
+            filter: blur(60px);
+            animation: pulse 15s infinite alternate ease-in-out;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+
+        header {
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 2.2rem;
+            letter-spacing: 4px;
+            background: var(--gradient-btn);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.7;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1.5rem 5rem;
+        }
+
+        /* Glass Cards */
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-purple);
+            text-align: center;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .form-grid { grid-template-columns: 1fr; }
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        label {
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-left: 0.5rem;
+        }
+
+        input {
+            padding: 1rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.5);
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            border-color: var(--accent-pink);
+            background: white;
+            box-shadow: 0 0 15px rgba(244, 114, 182, 0.1);
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .cta-button {
+            background: var(--gradient-btn);
+            color: white;
+            border: none;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(167, 139, 250, 0.3);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 35px rgba(167, 139, 250, 0.4);
+        }
+
+        /* Results UI */
+        #results {
+            display: none;
+        }
+
+        .score-hero {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .bond-score {
+            font-size: 4.5rem;
+            font-weight: 800;
+            background: var(--gradient-btn);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bond-label {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: -10px;
+        }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .charts-grid { grid-template-columns: 1fr; }
+        }
+
+        .chart-container {
+            height: 300px;
+            position: relative;
+        }
+
+        .insight-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .insight-box {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+
+        .insight-box h4 {
+            color: var(--accent-pink);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Loader */
+        .loader {
+            display: none;
+            text-align: center;
+            padding: 4rem;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid var(--blush-pink);
+            border-top: 5px solid var(--accent-purple);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1.5rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.8rem;
+            opacity: 0.6;
+        }
+
+        .error-message {
+            color: #ef4444;
+            background: #fee2e2;
+            padding: 1rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            display: none;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cosmic-bg"></div>
+
+    <header>
+        <div class="logo">DIVYA-DATA</div>
+        <p class="tagline">AI Parent-Child Bond Intelligence</p>
+    </header>
+
+    <div class="container">
+        <!-- Input Section -->
+        <section class="glass-card" id="input-card">
+            <h2>Enter Birth Details</h2>
+            <div id="error-box" class="error-message">Please fill in all birth details.</div>
+            <div class="form-grid">
+                <!-- Parent -->
+                <div class="input-block">
+                    <h3>The Parent</h3>
+                    <div class="input-group">
+                        <label>Parent Name</label>
+                        <input type="text" id="parentName" placeholder="e.g. Sarah">
+                    </div>
+                    <div class="input-group" style="margin-top: 1rem;">
+                        <label>Birth Date</label>
+                        <input type="date" id="parentDate">
+                    </div>
+                </div>
+                <!-- Child -->
+                <div class="input-block">
+                    <h3>The Child</h3>
+                    <div class="input-group">
+                        <label>Child Name</label>
+                        <input type="text" id="childName" placeholder="e.g. Leo">
+                    </div>
+                    <div class="input-group" style="margin-top: 1rem;">
+                        <label>Birth Date</label>
+                        <input type="date" id="childDate">
+                    </div>
+                </div>
+            </div>
+            <div class="btn-container">
+                <button class="cta-button" onclick="analyzeCompatibility()">Generate Cosmic Insights</button>
+            </div>
+        </section>
+
+        <!-- Loading State -->
+        <div class="loader" id="loader">
+            <div class="spinner"></div>
+            <p>Consulting the stars and aligning planetary energies...</p>
+        </div>
+
+        <!-- Results Section -->
+        <section id="results">
+            <div class="glass-card score-hero">
+                <div class="bond-score" id="totalScore">88%</div>
+                <div class="bond-label">Overall Bond Strength</div>
+                <p style="margin-top: 1rem; max-width: 600px; margin-inline: auto;" id="summaryText"></p>
+            </div>
+
+            <div class="charts-grid">
+                <div class="glass-card chart-container">
+                    <h2>Harmony Radar</h2>
+                    <canvas id="radarChart"></canvas>
+                </div>
+                <div class="glass-card chart-container">
+                    <h2>Authority Balance</h2>
+                    <canvas id="barChart"></canvas>
+                </div>
+            </div>
+
+            <div class="glass-card">
+                <h2>Deep Insights</h2>
+                <div class="insight-grid">
+                    <div class="insight-box">
+                        <h4>✨ Emotional Needs</h4>
+                        <p id="childNeeds"></p>
+                    </div>
+                    <div class="insight-box">
+                        <h4>🧘 Parenting Strategy</h4>
+                        <p id="parentAdvice"></p>
+                    </div>
+                    <div class="insight-box">
+                        <h4>🔥 Friction Triggers</h4>
+                        <p id="frictionAreas"></p>
+                    </div>
+                    <div class="insight-box">
+                        <h4>🌱 Growth Alignment</h4>
+                        <p id="growthSuggestions"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="btn-container">
+                <button class="cta-button" onclick="location.reload()" style="background: white; color: var(--accent-purple); border: 2px solid var(--accent-purple);">Start New Analysis</button>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        &copy; 2024 DIVYA-DATA. Cosmic intelligence for the modern family.
+    </footer>
+
+    <script>
+        // Astrological Engine (Simplified Planetary Position Math)
+        const getZodiac = (date) => {
+            const d = new Date(date);
+            const m = d.getMonth() + 1;
+            const day = d.getDate();
+            if ((m == 3 && day >= 21) || (m == 4 && day <= 19)) return { sign: "Aries", element: "Fire", quality: "Cardinal", ruler: "Mars" };
+            if ((m == 4 && day >= 20) || (m == 5 && day <= 20)) return { sign: "Taurus", element: "Earth", quality: "Fixed", ruler: "Venus" };
+            if ((m == 5 && day >= 21) || (m == 6 && day <= 20)) return { sign: "Gemini", element: "Air", quality: "Mutable", ruler: "Mercury" };
+            if ((m == 6 && day >= 21) || (m == 7 && day <= 22)) return { sign: "Cancer", element: "Water", quality: "Cardinal", ruler: "Moon" };
+            if ((m == 7 && day >= 23) || (m == 8 && day <= 22)) return { sign: "Leo", element: "Fire", quality: "Fixed", ruler: "Sun" };
+            if ((m == 8 && day >= 23) || (m == 9 && day <= 22)) return { sign: "Virgo", element: "Earth", quality: "Mutable", ruler: "Mercury" };
+            if ((m == 9 && day >= 23) || (m == 10 && day <= 22)) return { sign: "Libra", element: "Air", quality: "Cardinal", ruler: "Venus" };
+            if ((m == 10 && day >= 23) || (m == 11 && day <= 21)) return { sign: "Scorpio", element: "Water", quality: "Fixed", ruler: "Pluto" };
+            if ((m == 11 && day >= 22) || (m == 12 && day <= 21)) return { sign: "Sagittarius", element: "Fire", quality: "Mutable", ruler: "Jupiter" };
+            if ((m == 12 && day >= 22) || (m == 1 && day <= 19)) return { sign: "Capricorn", element: "Earth", quality: "Cardinal", ruler: "Saturn" };
+            if ((m == 1 && day >= 20) || (m == 2 && day <= 18)) return { sign: "Aquarius", element: "Air", quality: "Fixed", ruler: "Uranus" };
+            return { sign: "Pisces", element: "Water", quality: "Mutable", ruler: "Neptune" };
+        };
+
+        const calculatePlanetaryPositions = (date) => {
+            const timestamp = new Date(date).getTime() / 1000;
+            // Dummy logic to simulate varied positions based on date for Mercury and Moon
+            // In a production app with backend, we'd use a Swiss Ephemeris API
+            return {
+                sun: getZodiac(date),
+                moon: ZODIAC_LIST[(Math.floor(timestamp / 235123) % 12)],
+                mercury: ZODIAC_LIST[(Math.floor(timestamp / 312345) % 12)],
+                mars: ZODIAC_LIST[(Math.floor(timestamp / 523456) % 12)]
+            };
+        };
+
+        const ZODIAC_LIST = [
+            { sign: "Aries", element: "Fire", quality: "Cardinal" },
+            { sign: "Taurus", element: "Earth", quality: "Fixed" },
+            { sign: "Gemini", element: "Air", quality: "Mutable" },
+            { sign: "Cancer", element: "Water", quality: "Cardinal" },
+            { sign: "Leo", element: "Fire", quality: "Fixed" },
+            { sign: "Virgo", element: "Earth", quality: "Mutable" },
+            { sign: "Libra", element: "Air", quality: "Cardinal" },
+            { sign: "Scorpio", element: "Water", quality: "Fixed" },
+            { sign: "Sagittarius", element: "Fire", quality: "Mutable" },
+            { sign: "Capricorn", element: "Earth", quality: "Cardinal" },
+            { sign: "Aquarius", element: "Air", quality: "Fixed" },
+            { sign: "Pisces", element: "Water", quality: "Mutable" }
+        ];
+
+        let radarChart, barChart;
+
+        function analyzeCompatibility() {
+            const pName = document.getElementById('parentName').value;
+            const cName = document.getElementById('childName').value;
+            const pDate = document.getElementById('parentDate').value;
+            const cDate = document.getElementById('childDate').value;
+            const errorBox = document.getElementById('error-box');
+
+            if (!pName || !cName || !pDate || !cDate) {
+                errorBox.style.display = 'block';
+                return;
+            }
+            errorBox.style.display = 'none';
+
+            // Show Loader
+            document.getElementById('input-card').style.display = 'none';
+            document.getElementById('loader').style.display = 'block';
+
+            setTimeout(() => {
+                const parentPlanets = calculatePlanetaryPositions(pDate);
+                const childPlanets = calculatePlanetaryPositions(cDate);
+
+                // Compatibility Logic
+                const emotionalScore = calculateHarmony(parentPlanets.moon, childPlanets.moon);
+                const communicationScore = calculateHarmony(parentPlanets.mercury, childPlanets.mercury);
+                const authorityScore = calculateAuthority(parentPlanets.mars, childPlanets.sun);
+                const growthScore = calculateHarmony(parentPlanets.sun, childPlanets.sun);
+                const conflictScore = 100 - calculateHarmony(parentPlanets.mars, childPlanets.mars);
+
+                const totalScore = Math.floor((emotionalScore + communicationScore + (100-conflictScore) + growthScore) / 4);
+
+                // UI Updates
+                document.getElementById('loader').style.display = 'none';
+                document.getElementById('results').style.display = 'block';
+                document.getElementById('totalScore').innerText = totalScore + '%';
+
+                document.getElementById('summaryText').innerText = `The cosmic bond between ${pName} and ${cName} is driven by ${parentPlanets.sun.element} and ${childPlanets.sun.element} energies. Their connection thrives on ${emotionalScore > 70 ? 'deep emotional synchronicity' : 'learning through shared challenges'}.`;
+
+                document.getElementById('childNeeds').innerText = getChildNeeds(childPlanets);
+                document.getElementById('parentAdvice').innerText = getParentingAdvice(parentPlanets, childPlanets);
+                document.getElementById('frictionAreas').innerText = getFriction(parentPlanets, childPlanets);
+                document.getElementById('growthSuggestions').innerText = getGrowth(parentPlanets, childPlanets);
+
+                renderCharts(emotionalScore, communicationScore, growthScore, conflictScore, authorityScore);
+            }, 2000);
+        }
+
+        function calculateHarmony(p1, p2) {
+            if (p1.element === p2.element) return 95;
+            const complementary = {
+                "Fire": "Air", "Air": "Fire",
+                "Earth": "Water", "Water": "Earth"
+            };
+            if (complementary[p1.element] === p2.element) return 85;
+            if (p1.quality === p2.quality) return 50; // Square/Opposition tension
+            return 65;
+        }
+
+        function calculateAuthority(pMars, cSun) {
+            // Balance between parent's drive and child's ego
+            if (pMars.quality === "Cardinal" && cSun.quality === "Fixed") return 40; // High friction
+            if (pMars.element === "Fire" && cSun.element === "Water") return 30; // Extinguishing
+            return 75;
+        }
+
+        function getChildNeeds(planets) {
+            const needs = {
+                "Fire": "Needs physical activity, encouragement of their independence, and space to lead.",
+                "Earth": "Needs routine, physical touch, tangible rewards, and a sense of security.",
+                "Air": "Needs conversation, mental stimulation, social variety, and to be listened to.",
+                "Water": "Needs emotional validation, quiet time, creative outlets, and deep reassurance."
+            };
+            return `${planets.sun.sign} children thrive when their ${planets.moon.element} emotional side is nurtured. ${needs[planets.sun.element]}`;
+        }
+
+        function getParentingAdvice(p, c) {
+            if (p.sun.element === c.sun.element) return "You mirror each other well. Lead by example, as the child will naturally adopt your strengths and shadows.";
+            return `Adapt your ${p.sun.element} approach to meet their ${c.sun.element} nature. Speak their language rather than expecting them to mirror yours.`;
+        }
+
+        function getFriction(p, c) {
+            if (p.sun.quality === c.sun.quality) return "Both of you share the same 'Quality' of action. This often leads to power struggles or stubborn stand-offs.";
+            return "Friction arises when the Parent's need for structure meets the Child's need for emotional spontaneity.";
+        }
+
+        function getGrowth(p, c) {
+            return `Through ${c.sun.sign}, you are learning to soften your edges. This child is your cosmic teacher in patience and unconditional support.`;
+        }
+
+        function renderCharts(emo, comm, grow, conf, auth) {
+            const ctxRadar = document.getElementById('radarChart').getContext('2d');
+            const ctxBar = document.getElementById('barChart').getContext('2d');
+
+            if (radarChart) radarChart.destroy();
+            if (barChart) barChart.destroy();
+
+            radarChart = new Chart(ctxRadar, {
+                type: 'radar',
+                data: {
+                    labels: ['Emotional Harmony', 'Communication', 'Growth Alignment', 'Conflict Resolution', 'Security'],
+                    datasets: [{
+                        label: 'Bond Dimensions',
+                        data: [emo, comm, grow, 100 - conf, 80],
+                        backgroundColor: 'rgba(167, 139, 250, 0.2)',
+                        borderColor: '#A78BFA',
+                        pointBackgroundColor: '#F472B6',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    scales: { r: { min: 0, max: 100, ticks: { display: false } } },
+                    plugins: { legend: { display: false } }
+                }
+            });
+
+            barChart = new Chart(ctxBar, {
+                type: 'bar',
+                data: {
+                    labels: ['Parent Authority', 'Child Autonomy'],
+                    datasets: [{
+                        data: [auth, 100 - auth + 20],
+                        backgroundColor: ['#F472B6', '#60A5FA'],
+                        borderRadius: 10
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    scales: { x: { min: 0, max: 100, display: false } },
+                    plugins: { legend: { display: false } }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
